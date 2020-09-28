@@ -5,7 +5,7 @@ from setuptools import setup
 
 requirements = [
     'kombu>=4, <5',
-    'celery>=4, <5',
+    'celery>=4, <6',
 ]
 setup_requirements = [
 ]
