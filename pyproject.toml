@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "pubsub"
+version = "0.0.0"
+description = ""
+authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+kombu = "^5.2.3"
+celery = "^5.2.3"
+Flask = { version = "^2.0.2", optional = true}
+Django = { version = "^4.0.1", optional = true}
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+black = "^21.12b0"
+pytest-cov = "^3.0.0"
+
+[tool.poetry.extras]
+flask = ["Flask"]
+django = ["Django"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry-dynamic-versioning]
+enable = true
