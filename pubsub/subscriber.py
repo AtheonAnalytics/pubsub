@@ -47,8 +47,7 @@ class Worker(ConsumerMixin):
         if not isinstance(body, dict):
             raise ValueError('Body must be a dictionary.')
 
-        get_app = self.config.get_celery_app
-        celery_app = get_app()
+        celery_app = self._get_celery_app()
 
         task_mappings = self.config.task_mapping
 
@@ -73,6 +72,11 @@ class Worker(ConsumerMixin):
             task_result = celery_app.send_task(task_name, args=task_args, kwargs=task_kwargs, **celery_kwargs)
 
             logger.info('Task queued', extra={'task_id': task_result.id, 'task_name': task_name})
+
+    def _get_celery_app(self):
+        """Uses the method defined in the config to fetch the celery app"""
+        get_app = self.config.get_celery_app
+        return get_app()
 
     @staticmethod
     def does_routing_key_match(test_string, routing_key):
