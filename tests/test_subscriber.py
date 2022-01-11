@@ -1,4 +1,4 @@
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
 from kombu import Connection, Exchange, Queue
 
@@ -51,6 +51,22 @@ def test_task_queueing_not_called(ps_config):
         worker = Worker(ps_config, None, None)
         worker.queue_task("test.unrecognised_routing_key", dict(test_key="test_value"))
         celery_mock.return_value.send_task.assert_not_called()
+
+
+def test_task_queueing_with_celery(celery_app, celery_worker, ps_config):
+    test_func = MagicMock()
+
+    @celery_app.task(name="test_task")
+    def test_task(*args, **kwargs):
+        test_func()
+        return True
+    celery_worker.reload()
+
+    with patch('pubsub.subscriber.Worker._get_celery_app', return_value=celery_app):
+        worker = Worker(ps_config, None, None)
+        results = worker.queue_task("test.routing_key", dict(test_key="test_value"))
+        results[0].get()
+        test_func.assert_called_once()
 
 
 def test_routing_keys_match():

@@ -2,6 +2,8 @@ import pytest
 
 from pubsub.config import PubSubConfig
 
+pytest_plugins = ("celery.contrib.pytest", )
+
 
 @pytest.fixture()
 def ps_config():

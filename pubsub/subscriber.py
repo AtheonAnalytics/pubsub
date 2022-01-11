@@ -51,6 +51,7 @@ class Worker(ConsumerMixin):
 
         task_mappings = self.config.task_mapping
 
+        results = []
         for task_mapping in task_mappings:
 
             if not self.does_routing_key_match(routing_key, task_mapping['routing_key']):
@@ -70,8 +71,10 @@ class Worker(ConsumerMixin):
             task_args, task_kwargs = get_args(routing_key, body)
             celery_kwargs = get_celery_kwargs(routing_key, body) if get_celery_kwargs else {}
             task_result = celery_app.send_task(task_name, args=task_args, kwargs=task_kwargs, **celery_kwargs)
+            results.append(task_result)
 
             logger.info('Task queued', extra={'task_id': task_result.id, 'task_name': task_name})
+        return results
 
     def _get_celery_app(self):
         """Uses the method defined in the config to fetch the celery app"""
