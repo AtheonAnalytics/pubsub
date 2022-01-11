@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Callable
+from unittest.mock import MagicMock
 
 import pytest
 
@@ -9,7 +10,7 @@ from pubsub.config import PubSubConfig, MisconfigurationException
 def test_config_init():
     config = PubSubConfig(
         task_mapping=[],
-        get_celery_app=lambda x: x,
+        get_celery_app=MagicMock(),
         broker_url="memory://",
         exchange="test_exchange",
         queue_name="test_queue",
