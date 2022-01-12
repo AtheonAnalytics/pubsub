@@ -8,9 +8,9 @@ from pubsub.subscriber import Subscriber
 
 
 class Command(BaseCommand):
-    help = 'Start Subscriber'
+    help = "Start Subscriber"
 
     def handle(self, *args, **kwargs):
-        self.stdout.write('Starting subscriber...')
+        self.stdout.write("Starting subscriber...")
         config = PubSubConfig.from_object(settings)
         Subscriber(config).start()

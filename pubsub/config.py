@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+
 class MisconfigurationException(Exception):
     pass
 
@@ -35,7 +36,7 @@ class PubSubConfig(object):
         self.queue_name = queue_name
 
     @classmethod
-    def from_object(cls, obj, prefix='PUBSUB_'):
+    def from_object(cls, obj, prefix="PUBSUB_"):
         """
         Return configuration instance from an object.
 
@@ -56,8 +57,14 @@ class PubSubConfig(object):
             PubSubConfig instance.
 
         """
-        args = ['task_mapping', 'get_celery_app', 'broker_url', 'exchange', 'queue_name']
-        arg_names = ['{}{}'.format(prefix, name).upper() for name in args]
+        args = [
+            "task_mapping",
+            "get_celery_app",
+            "broker_url",
+            "exchange",
+            "queue_name",
+        ]
+        arg_names = ["{}{}".format(prefix, name).upper() for name in args]
         arg_dict = {}
 
         for arg_name, prefix_arg_name in zip(args, arg_names):
@@ -71,7 +78,7 @@ class PubSubConfig(object):
 
             if arg_val is None:
                 raise MisconfigurationException(
-                    'Missing configuration: {}'.format(arg_name)
+                    "Missing configuration: {}".format(arg_name)
                 )
 
         return cls(**arg_dict)
