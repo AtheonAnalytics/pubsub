@@ -49,5 +49,5 @@ python =
 deps =
     pytest
     pytest-cov
-commands = pytest
+commands = pytest  --cov=./ --cov-report=xml
 """
