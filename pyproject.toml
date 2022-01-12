@@ -6,8 +6,8 @@ authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-kombu = "^5"
-celery = "^5"
+kombu = ">= 4, < 6"
+celery = ">= 4, < 6"
 
 Flask = { version = "^2", optional = true}
 Django = { version = "^4", optional = true}

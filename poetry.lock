@@ -518,7 +518,7 @@ flask = ["Flask"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "3dbcfd2d7cd8a61606226c0a234428e2fb6f755bc668634c4bbb85bbfa124518"
+content-hash = "c8fa06b902f7e0be6e25b367c02d54a4599b2daddf0e0f139f165721af110860"
 
 [metadata.files]
 amqp = [
