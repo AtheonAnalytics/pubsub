@@ -1,3 +1,8 @@
+[![codecov](https://codecov.io/gh/AtheonAnalytics/pubsub/branch/master/graph/badge.svg?token=MJM8ZZJEOY)](https://codecov.io/gh/AtheonAnalytics/pubsub)
+![example workflow](https://github.com/AtheonAnalytics/pubsub/actions/workflows/tests.yaml/badge.svg)
+![example workflow](https://github.com/AtheonAnalytics/pubsub/actions/workflows/linting.yml/badge.svg)
+
+
 <h2 align="center">PubSub</h2>
 
 Pubsub is a messaging library for Python that helps facilitate comminication between microservices.
