@@ -5,12 +5,12 @@ description = ""
 authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6.2"
 kombu = ">= 4, < 6"
 celery = ">= 4, < 6"
 
 Flask = { version = "^2", optional = true}
-Django = { version = "^4", optional = true}
+Django = { version = "^3", optional = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6"
