@@ -41,8 +41,6 @@ def get_celery_app():
 ```
 
 <dl>
-    <dt>PUBSUB_GET_CELERY_APP</dt>
-    <dd>Method that can be called to return the Celery app</dd>
     <dt>PUBSUB_QUEUE_NAME</dt>
     <dd>Name of the queue</dd>
     <dt>PUBSUB_TASK_MAPPING</dt>
