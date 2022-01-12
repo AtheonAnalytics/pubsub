@@ -8,7 +8,7 @@ from pubsub.publisher import Publisher
 def test_publish_event(ps_config):
     publisher = Publisher(config=ps_config)
 
-    with patch('pubsub.publisher.producers') as publish_mock:
+    with patch("pubsub.publisher.producers") as publish_mock:
         publisher.publish_event("test_routing_key", dict(some_key="some_value"))
 
         publish_mock.__getitem__().acquire().__enter__().publish.assert_called_with(

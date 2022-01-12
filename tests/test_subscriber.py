@@ -40,14 +40,16 @@ def test_worker_consumption():
 
 
 def test_task_queueing_called(ps_config):
-    with patch('pubsub.subscriber.Worker._get_celery_app') as celery_mock:
+    with patch("pubsub.subscriber.Worker._get_celery_app") as celery_mock:
         worker = Worker(ps_config, None, None)
         worker.queue_task("test.routing_key", dict(test_key="test_value"))
-        celery_mock.return_value.send_task.assert_called_once_with('test_task', args=(1,), kwargs={1: 2})
+        celery_mock.return_value.send_task.assert_called_once_with(
+            "test_task", args=(1,), kwargs={1: 2}
+        )
 
 
 def test_task_queueing_not_called(ps_config):
-    with patch('pubsub.subscriber.Worker._get_celery_app') as celery_mock:
+    with patch("pubsub.subscriber.Worker._get_celery_app") as celery_mock:
         worker = Worker(ps_config, None, None)
         worker.queue_task("test.unrecognised_routing_key", dict(test_key="test_value"))
         celery_mock.return_value.send_task.assert_not_called()
@@ -60,9 +62,10 @@ def test_task_queueing_with_celery(celery_app, celery_worker, ps_config):
     def test_task(*args, **kwargs):
         test_func()
         return True
+
     celery_worker.reload()
 
-    with patch('pubsub.subscriber.Worker._get_celery_app', return_value=celery_app):
+    with patch("pubsub.subscriber.Worker._get_celery_app", return_value=celery_app):
         worker = Worker(ps_config, None, None)
         results = worker.queue_task("test.routing_key", dict(test_key="test_value"))
         results[0].get()

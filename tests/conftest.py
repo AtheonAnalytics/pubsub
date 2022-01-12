@@ -2,7 +2,7 @@ import pytest
 
 from pubsub.config import PubSubConfig
 
-pytest_plugins = ("celery.contrib.pytest", )
+pytest_plugins = ("celery.contrib.pytest",)
 
 
 @pytest.fixture()
@@ -13,7 +13,7 @@ def ps_config():
                 task="test_task",
                 get_args=lambda x, y: ((1,), {1: 2}),
                 should_schedule=lambda x, y: True,
-                routing_key="test.routing_key"
+                routing_key="test.routing_key",
             )
         ],
         get_celery_app=lambda x: x,
