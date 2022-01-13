@@ -48,5 +48,7 @@ python =
 deps =
     pytest
     pytest-cov
+extras =
+    Flask
 commands = pytest  --cov=./ --cov-report=xml
 """
