@@ -5,7 +5,7 @@ updates:
   directory: "/"
   schedule:
     interval: daily
-  open-pull-requests-limit: 20
+  open-pull-requests-limit: 0
   insecure-external-code-execution: allow
   target-branch: master
 
