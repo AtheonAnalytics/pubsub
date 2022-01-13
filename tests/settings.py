@@ -5,4 +5,3 @@ PUBSUB_EXCHANGE = "data-pipeline"
 PUBSUB_QUEUE_NAME = "data-catalogue"
 PUBSUB_TASK_MAPPING = []
 PUBSUB_GET_CELERY_APP = MagicMock
-
