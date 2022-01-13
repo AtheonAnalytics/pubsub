@@ -28,7 +28,7 @@ class Publisher(object):
 
         """
         with Connection(self.config.broker_url) as connection:
-            data_pipeline_exchange = Exchange(self.config.exchange, 'topic')
+            data_pipeline_exchange = Exchange(self.config.exchange, "topic")
 
             with producers[connection].acquire(block=True) as producer:
                 producer.publish(
@@ -37,5 +37,10 @@ class Publisher(object):
                     exchange=data_pipeline_exchange,
                     declare=[data_pipeline_exchange],
                     retry=True,
-                    retry_policy={"max_retries": 3, "interval_start": 0, "interval_step": 0.5, "interval_max": 1}
+                    retry_policy={
+                        "max_retries": 3,
+                        "interval_start": 0,
+                        "interval_step": 0.5,
+                        "interval_max": 1,
+                    },
                 )

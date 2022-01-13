@@ -9,6 +9,6 @@ from pubsub import PubSubConfig, Subscriber
 @with_appcontext
 def subscriber():
     """Start Subscriber"""
-    click.echo('Starting subscriber...')
+    click.echo("Starting subscriber...")
     config = PubSubConfig.from_object(current_app.config)
     Subscriber(config).start()

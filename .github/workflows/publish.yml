@@ -1,0 +1,30 @@
+name: Publish to CloudRepo
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python
+        uses: actions/setup-python@master
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry poetry-dynamic-versioning
+          poetry install
+      - name: Publish to cloudrepo
+        run: |
+          poetry config repositories.atheon https://atheon.mycloudrepo.io/repositories/atheon-packages
+          poetry publish --build -r atheon
+        env:
+          POETRY_HTTP_BASIC_ATHEON_USERNAME: ${{ secrets.CLOUDREPO_USERNAME }}
+          POETRY_HTTP_BASIC_ATHEON_PASSWORD: ${{ secrets.CLOUDREPO_PASSWORD }}
