@@ -5,17 +5,17 @@ description = ""
 authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-kombu = ">= 4, < 6"
-celery = ">= 4, < 6"
+python = "^3.9"
+kombu = "^5.2.3"
+celery = "^5.2.3"
 
 Flask = { version = "^2", optional = true}
 Django = { version = "^3", optional = true}
 
 [tool.poetry.dev-dependencies]
-pytest = "^6"
-black = "^21.12b0"
-pytest-cov = "^3"
+pytest = "^7.0.1"
+black = "^22.1.0"
+pytest-cov = "^3.0.0"
 
 [tool.poetry.extras]
 flask = ["Flask"]
