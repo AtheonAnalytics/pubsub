@@ -27,6 +27,15 @@ jobs:
         run: |
           python -m pip install --upgrade setuptools pip wheel
           python -m pip install tox-gh-actions
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN_APPLICATION }}
+        with:
+          command: monitor
+
       - name: Test with tox
         run: tox
 
