@@ -115,7 +115,9 @@ class Worker(ConsumerMixin):
             return string
 
         routing_key_els = routing_key.split(".")
-        routing_key_els_regex = "\.".join([convert(i) for i in routing_key_els])
+        routing_key_joined = "\.".join([convert(i) for i in routing_key_els])
+        # Specify line start and end to avoid matching similar routing keys
+        routing_key_els_regex = f"^{routing_key_joined}$"
         return re.match(routing_key_els_regex, test_string) is not None
 
 
