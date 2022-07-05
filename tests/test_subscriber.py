@@ -76,7 +76,9 @@ def test_routing_keys_match():
     assert Worker.does_routing_key_match("test.this.key", "test.this.key") is True
     assert Worker.does_routing_key_match("test.this.key", "test.this.keys") is False
     assert Worker.does_routing_key_match("test.this.key", "tests.this.key") is False
-    assert Worker.does_routing_key_match("test.this.key_extra", "test.this.key") is False
+    assert (
+        Worker.does_routing_key_match("test.this.key_extra", "test.this.key") is False
+    )
 
     assert Worker.does_routing_key_match("test.this.key", "test.*.key") is True
     assert Worker.does_routing_key_match("test.that.key", "test.*.key") is True
