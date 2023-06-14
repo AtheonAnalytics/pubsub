@@ -5,7 +5,7 @@ description = ""
 authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.7"
 kombu = ">= 4, < 6"
 celery = ">= 4, < 6"
 
@@ -32,7 +32,7 @@ enable = true
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py36,py37, py38, py39, py310, 3.11
+envlist = py37, py38, py39, py310, 3.11
 
 [tox:.package]
 basepython = python3
