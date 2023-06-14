@@ -5,17 +5,17 @@ description = ""
 authors = ["Thomas Weatherston <thomas.weatherston@atheon.co.uk>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.11"
 kombu = ">= 4, < 6"
 celery = ">= 4, < 6"
 
 Flask = { version = "^2", optional = true}
 Django = { version = "^3", optional = true}
 
-[tool.poetry.dev-dependencies]
-pytest = "^6"
-black = "^21.12b0"
-pytest-cov = "^3"
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.2"
+black = "^23.3.0"
+pytest-cov = "^4.1.0"
 
 [tool.poetry.extras]
 flask = ["Flask"]
@@ -32,7 +32,7 @@ enable = true
 legacy_tox_ini = """
 [tox]
 isolated_build = True
-envlist = py36,py37, py38, py39, py310
+envlist = py36,py37, py38, py39, py310, 3.11
 
 [tox:.package]
 basepython = python3
@@ -43,6 +43,7 @@ python =
     3.8: py38
     3.9: py39
     3.10: py310
+    3.11: py311
 
 [testenv]
 deps =
