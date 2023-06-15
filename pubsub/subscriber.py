@@ -57,7 +57,6 @@ class Worker(ConsumerMixin):
 
         results = []
         for task_mapping in task_mappings:
-
             if not self.does_routing_key_match(
                 routing_key, task_mapping["routing_key"]
             ):
