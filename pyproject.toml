@@ -10,7 +10,7 @@ kombu = ">= 4, < 6"
 celery = ">= 4, < 6"
 
 Flask = { version = "^2", optional = true}
-Django = { version = "^3", optional = true}
+Django = { version = "^4.2.15", optional = true}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.2"
