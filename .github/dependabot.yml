@@ -1,0 +1,16 @@
+version: 2
+registries:
+  python-index-atheon-mycloudrepo-io-repositories-atheon-packages:
+    type: python-index
+    url: https://atheon.mycloudrepo.io/repositories/atheon-packages
+    username: "${{secrets.PYTHON_INDEX_ATHEON_MYCLOUDREPO_IO_REPOSITORIES_ATHEON_PACKAGES_USERNAME}}"
+    password: "${{secrets.PYTHON_INDEX_ATHEON_MYCLOUDREPO_IO_REPOSITORIES_ATHEON_PACKAGES_PASSWORD}}"
+
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  registries:
+  - python-index-atheon-mycloudrepo-io-repositories-atheon-packages
